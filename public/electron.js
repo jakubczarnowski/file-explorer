@@ -1,9 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require("path");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { app, BrowserWindow } = require("electron");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const isDev = require("electron-is-dev");
+import path from "path";
+import { app, BrowserWindow } from "electron";
+import isDev from "electron-is-dev";
 
 function createWindow() {
     // Create the browser window.
