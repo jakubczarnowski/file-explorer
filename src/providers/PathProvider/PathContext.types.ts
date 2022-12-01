@@ -14,4 +14,5 @@ export type PathContextTypes = {
     pathHistory?: string[];
     pathHistoryWithFiles?: FileInfo[][];
     currentHistoryIndex?: number;
+    toggleExtensions?: () => void;
 };

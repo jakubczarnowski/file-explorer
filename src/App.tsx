@@ -1,8 +1,15 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
+import LeftBar from "./components/LeftBar";
+import MainView from "./components/MainView";
+import BaseLayout from "./layout/BaseLayout";
 
 function App() {
-    return <Box sx={{ bgColor: "#FFAA12", h: "100vh", w: "100vw" }}></Box>;
+    return (
+        <BaseLayout>
+            <LeftBar />
+            <MainView />
+        </BaseLayout>
+    );
 }
 
 export default App;
