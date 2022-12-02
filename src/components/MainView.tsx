@@ -6,11 +6,21 @@ import { mapFileTypeToIcon } from "../utils/utils";
 import { File } from "./";
 
 const MainView = () => {
-    const { currentPath, getFilesInCurrentPath } = usePathContext();
+    const { currentPath, getFilesInCurrentPath, changeCurrentPath, openFile } = usePathContext();
     const [files, setFiles] = useState<FileInfo[] | null>(null);
     useEffect(() => {
-        getFilesInCurrentPath().then((files) => setFiles(files));
+        getFilesInCurrentPath()
+            .then((files) => setFiles(files))
+            .catch(() => setFiles(null));
     }, [currentPath]);
+    const handleDoubleClick = (file: FileInfo) => {
+        const path = `${currentPath}\\${file.name}`;
+        if (file.isDirectory) {
+            changeCurrentPath(path);
+            return;
+        }
+        openFile(path);
+    };
     return (
         <Box p={5} flex={"4 1 0"} overflowX={"hidden"} boxSizing={"border-box"}>
             <Stack>
@@ -23,6 +33,7 @@ const MainView = () => {
                                     name={file.name}
                                     icon={mapFileTypeToIcon(file)}
                                     iconColor={file.isDirectory ? "yellow" : "gray"}
+                                    onDoubleClick={() => handleDoubleClick(file)}
                                 />
                             ))}
                         </Flex>

@@ -1,6 +1,7 @@
 import { FileInfo } from "./../../src/providers/PathProvider/PathContext.types";
 import * as fs from "fs";
 import os from "os";
+import { shell } from "electron";
 
 const directoryContents = async (path: string): Promise<FileInfo[]> => {
     return new Promise((resolve, reject) => {
@@ -18,10 +19,13 @@ const directoryContents = async (path: string): Promise<FileInfo[]> => {
         });
     });
 };
+const openFile = (path: string) => {
+    shell.openPath(path);
+};
 const baseUserPath = () => os.homedir();
 
 const currentDirectory = () => {
     return process.cwd();
 };
 
-export { directoryContents, currentDirectory, baseUserPath };
+export { directoryContents, currentDirectory, baseUserPath, openFile };
