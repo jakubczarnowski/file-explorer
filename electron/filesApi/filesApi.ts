@@ -11,9 +11,13 @@ const directoryContents = async (path: string): Promise<FileInfo[]> => {
             }
             resolve(
                 files.map((file) => {
-                    const filePath = `${path}/${file}`;
-                    const isDirectory = fs.lstatSync(filePath).isDirectory();
-                    return { name: file, path: filePath, isDirectory };
+                    try {
+                        const filePath = `${path}\\${file}`;
+                        const isDirectory = fs.lstatSync(filePath).isDirectory();
+                        return { name: file, path: filePath, isDirectory };
+                    } catch {
+                        return { name: file, path: "", isDirectory: false };
+                    }
                 })
             );
         });

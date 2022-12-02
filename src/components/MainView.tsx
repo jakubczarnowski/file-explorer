@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, StackItem } from "@chakra-ui/react";
+import { Box, Flex, Stack, StackItem, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { usePathContext } from "../hooks/usePathContext";
 import { FileInfo } from "../providers/PathProvider/PathContext.types";
@@ -14,7 +14,7 @@ const MainView = () => {
             .catch(() => setFiles(null));
     }, [currentPath]);
     const handleDoubleClick = (file: FileInfo) => {
-        const path = `${currentPath}\\${file.name}`;
+        const path = file.path;
         if (file.isDirectory) {
             changeCurrentPath(path);
             return;
@@ -27,15 +27,19 @@ const MainView = () => {
                 <StackItem>
                     <Box>
                         <Flex flexWrap={"wrap"} justify={"flex-start"} mx={"auto"} alignItems={"center"}>
-                            {files?.map((file) => (
-                                <File
-                                    key={file.name}
-                                    name={file.name}
-                                    icon={mapFileTypeToIcon(file)}
-                                    iconColor={file.isDirectory ? "yellow" : "gray"}
-                                    onDoubleClick={() => handleDoubleClick(file)}
-                                />
-                            ))}
+                            {files ? (
+                                files.map((file) => (
+                                    <File
+                                        key={file.name}
+                                        name={file.name}
+                                        icon={mapFileTypeToIcon(file)}
+                                        iconColor={file.isDirectory ? "yellow" : "gray"}
+                                        onDoubleClick={() => handleDoubleClick(file)}
+                                    />
+                                ))
+                            ) : (
+                                <Text>There is nothing here!</Text>
+                            )}
                         </Flex>
                     </Box>
                 </StackItem>

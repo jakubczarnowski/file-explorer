@@ -21,6 +21,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const changeCurrentPath = (newPath: string) => {
+        if (newPath === currentPath) return;
         if (historyIndex !== history.length - 1) {
             setHistory((prev) => [...prev.slice(0, historyIndex + 1), newPath]);
         } else {
@@ -52,7 +53,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
         const newPath = currentPath.split("\\").slice(0, -1).join("\\");
         changeCurrentPath(newPath);
     };
-    const canGoUp = currentPath !== baseUserPath;
+    const canGoUp = currentPath !== "C:\\";
     const canGoBack = history.length > 1 && historyIndex !== 0;
     const canGoForward = history.length > 1 && historyIndex !== history.length - 1;
 

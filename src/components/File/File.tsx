@@ -1,4 +1,4 @@
-import { Box, Icon, Text } from "@chakra-ui/react";
+import { Box, Icon, Text, Tooltip } from "@chakra-ui/react";
 import React from "react";
 
 import { Props } from "./File.types";
@@ -19,9 +19,11 @@ const File = ({ name, icon, onDoubleClick, iconColor }: Props) => {
             onDoubleClick={() => onDoubleClick && onDoubleClick()}
         >
             <Icon color={iconColor} as={icon} w={"75px"} h={"75px"} mb={2} />
-            <Text w={"100%"} noOfLines={2} sx={{ userSelect: "none" }} fontSize={"sm"} fontWeight={"semibold"}>
-                {name}
-            </Text>
+            <Tooltip label={name}>
+                <Text w={"100%"} noOfLines={2} sx={{ userSelect: "none" }} fontSize={"sm"} fontWeight={"semibold"}>
+                    {name}
+                </Text>
+            </Tooltip>
         </Box>
     );
 };
