@@ -18,7 +18,13 @@ const MainView = () => {
 
                             <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
 
-                            <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+                            <File
+                                name={
+                                    "feasdasdasdasdasdasdasdasdwffeasdasdasdasdasdasdasdasdwffeasdasdasdasdasdasdasdasdwf.txt"
+                                }
+                                icon={GoFileDirectory}
+                                iconColor={"yellow"}
+                            />
 
                             <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
 

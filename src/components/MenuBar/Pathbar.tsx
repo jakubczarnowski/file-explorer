@@ -7,7 +7,7 @@ const Pathbar = () => {
     return (
         <InputGroup size={"sm"}>
             <InputLeftElement children={<Icon as={GoFileDirectory} />} />
-            <Input placeholder="C:/" />
+            <Input _focusVisible={{ borderColor: "hover" }} placeholder="C:/" />
             <InputRightElement children={<Icon as={AiOutlineStar} />} />
         </InputGroup>
     );

@@ -3,11 +3,10 @@ import React from "react";
 
 import { Props } from "./File.types";
 
-const File = ({ name, icon, onDoubleClick, onRightClick, iconColor }: Props) => {
+const File = ({ name, icon, onDoubleClick, iconColor }: Props) => {
     return (
         <Box
             w={"100px"}
-            h={"116px"}
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
@@ -16,12 +15,11 @@ const File = ({ name, icon, onDoubleClick, onRightClick, iconColor }: Props) => 
             _hover={{ backgroundColor: "hover" }}
             p={2}
             m={2}
-            onClick={(e) => e.type === "contextmenu" && onRightClick && onRightClick()}
+            textAlign={"center"}
             onDoubleClick={() => onDoubleClick && onDoubleClick()}
         >
             <Icon color={iconColor || "gray"} as={icon} w={"75px"} h={"75px"} mb={2} />
-
-            <Text pointerEvents={"none"} unselectable={"on"} fontSize={"sm"} fontWeight={"semibold"}>
+            <Text w={"100%"} noOfLines={2} sx={{ userSelect: "none" }} fontSize={"sm"} fontWeight={"semibold"}>
                 {name}
             </Text>
         </Box>

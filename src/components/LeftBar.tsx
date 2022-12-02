@@ -19,7 +19,7 @@ const LeftBar = () => {
                         <h2>
                             <AccordionButton>
                                 <Box flex="1" textAlign="left">
-                                    Fast Access
+                                    <Text sx={{ userSelect: "none" }}>Fast Access</Text>
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
@@ -35,15 +35,8 @@ const LeftBar = () => {
                     <AccordionItem>
                         <h2>
                             <AccordionButton>
-                                <Box
-                                    flex="1"
-                                    textAlign="left"
-                                    display={"flex"}
-                                    alignItems={"center"}
-                                    flexDirection={"row"}
-                                    justifyContent={"space-between"}
-                                >
-                                    <Text>Favorites</Text>
+                                <Box flex="1" textAlign={"left"}>
+                                    <Text sx={{ userSelect: "none" }}>Favorites</Text>
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>

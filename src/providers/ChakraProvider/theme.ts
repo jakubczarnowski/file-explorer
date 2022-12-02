@@ -23,6 +23,7 @@ export const theme = extendTheme({
                 color: colors.primaryFont,
             },
         },
+        Input: {},
     },
     colors: {
         primaryFont: colors.primaryFont,
