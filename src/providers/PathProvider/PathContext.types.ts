@@ -7,8 +7,8 @@ export type FileInfo = {
 export type PathContextTypes = {
     currentPath: string;
     changeCurrentPath: (newPath: string) => void;
-    getFilesInCurrentPath?: () => Promise<FileInfo[]>;
-    getFilesInPath?: (path: string) => Promise<FileInfo[]>;
+    getFilesInCurrentPath: () => Promise<FileInfo[]>;
+    getFilesInPath: (path: string) => Promise<FileInfo[]>;
     goBack?: () => void;
     goForward?: () => void;
     pathHistory?: string[];
@@ -20,4 +20,5 @@ export type PathContextTypes = {
     removeFavoritePath?: (path: string) => void;
     favoritePaths?: string[];
     isFavoritePath?: (path: string) => boolean;
+    baseUserPath: string;
 };

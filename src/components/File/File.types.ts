@@ -4,5 +4,5 @@ export type Props = {
     name: string;
     icon: IconType;
     onDoubleClick?: () => void;
-    iconColor?: string;
+    iconColor: string;
 };

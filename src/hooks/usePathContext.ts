@@ -6,5 +6,5 @@ export const usePathContext = () => {
     if (!path) {
         throw new Error("usePathContext must be used within a PathProvider");
     }
-    return { path };
+    return { ...path };
 };
