@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PathContext } from "../providers/PathProvider/PathProvider";
+import { PathContext } from "../providers/PathProvider";
 
 export const usePathContext = () => {
     const path = useContext(PathContext);

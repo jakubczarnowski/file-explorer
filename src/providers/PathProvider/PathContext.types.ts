@@ -15,4 +15,9 @@ export type PathContextTypes = {
     pathHistoryWithFiles?: FileInfo[][];
     currentHistoryIndex?: number;
     toggleExtensions?: () => void;
+    isShowingExtensions?: boolean;
+    addFavoritePath?: (path: string) => void;
+    removeFavoritePath?: (path: string) => void;
+    favoritePaths?: string[];
+    isFavoritePath?: (path: string) => boolean;
 };

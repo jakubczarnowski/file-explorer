@@ -1,10 +1,10 @@
-import { ChakraProvider, theme } from "@chakra-ui/react";
 import React from "react";
-import { PathProvider } from "./PathProvider/PathProvider";
+import ChakraProvider from "./ChakraProvider/ChakraProvider";
+import { PathProvider } from "./PathProvider";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
-        <ChakraProvider theme={theme}>
+        <ChakraProvider>
             <PathProvider>{children}</PathProvider>
         </ChakraProvider>
     );

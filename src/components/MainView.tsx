@@ -1,38 +1,29 @@
-import { Box, SimpleGrid, Stack, StackItem } from "@chakra-ui/react";
-import { GoFileDirectory } from "react-icons/go";
+import { Box, Flex, Stack, StackItem } from "@chakra-ui/react";
 import { AiFillFilePdf } from "react-icons/ai";
-import File from "./File/File";
+import { GoFileDirectory } from "react-icons/go";
+import { File } from "./";
 
 const MainView = () => {
     return (
-        <Box p={5} flex={"3 1 0"} border={"2px"} borderColor={"#2E282A"}>
+        <Box p={5} flex={"4 1 0"} overflowX={"hidden"} boxSizing={"border-box"}>
             <Stack>
-                <StackItem>Search</StackItem>
                 <StackItem>
                     <Box>
-                        <SimpleGrid columns={[2, 2, 3, 4, 5]} gap={6}>
-                            <Box p={5}>
-                                <File name={"text.txt"} icon={GoFileDirectory} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"nowa.pdf"} icon={AiFillFilePdf} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"123.txt"} icon={GoFileDirectory} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"fewf.txt"} icon={GoFileDirectory} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"fewf.txt"} icon={GoFileDirectory} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"fewf.txt"} icon={GoFileDirectory} />
-                            </Box>
-                            <Box p={5}>
-                                <File name={"fewf.txt"} icon={GoFileDirectory} />
-                            </Box>
-                        </SimpleGrid>
+                        <Flex flexWrap={"wrap"} justify={"flex-start"} mx={"auto"} alignItems={"center"}>
+                            <File name={"text.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+
+                            <File name={"nowa.pdf"} icon={AiFillFilePdf} />
+
+                            <File name={"123.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+
+                            <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+
+                            <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+
+                            <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+
+                            <File name={"fewf.txt"} icon={GoFileDirectory} iconColor={"yellow"} />
+                        </Flex>
                     </Box>
                 </StackItem>
             </Stack>

@@ -3,14 +3,7 @@ import React from "react";
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <Box
-            minW={"100vw"}
-            minH={"100vh"}
-            backgroundColor={"#D3D0CB"}
-            display={"flex"}
-            flexDir={"row"}
-            alignItems={"stretch"}
-        >
+        <Box minH={"100vh"} overflow={"hidden"}>
             {children}
         </Box>
     );

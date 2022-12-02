@@ -1,13 +1,15 @@
-import React from "react";
-import LeftBar from "./components/LeftBar";
-import MainView from "./components/MainView";
-import BaseLayout from "./layout/BaseLayout";
+import { Box } from "@chakra-ui/react";
+import { LeftBar, MainView, MenuBar } from "./components";
+import { BaseLayout } from "./layout";
 
 function App() {
     return (
         <BaseLayout>
-            <LeftBar />
-            <MainView />
+            <MenuBar />
+            <Box display={"flex"} flexDir={"row"} alignItems={"stretch"} minH={"100%"}>
+                <LeftBar />
+                <MainView />
+            </Box>
         </BaseLayout>
     );
 }

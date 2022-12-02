@@ -1,6 +1,14 @@
-import path from "path";
-import { app, BrowserWindow } from "electron";
-import isDev from "electron-is-dev";
+// import path from "path";
+// import { app, BrowserWindow } from "electron";
+// import isDev from "electron-is-dev";
+// the app breaks on current electron version when using import even with file set as module, i've got no time to figure out why, so i'm using require instead
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { app, BrowserWindow } = require("electron");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const isDev = require("electron-is-dev");
 
 function createWindow() {
     // Create the browser window.
@@ -11,6 +19,7 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
+    win.setMenuBarVisibility(false);
 
     // and load the index.html of the app.
     // win.loadFile("index.html");
