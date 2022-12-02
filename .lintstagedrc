@@ -1,6 +1,3 @@
 {
-    "*{.ts,tsx,js}": [
-        "npx prettier --write",
-        "eslint --fix --max-warnings 0"
-    ]
+    "*{.ts,tsx}": ["npx prettier --write", "eslint --fix --max-warnings 0"]
 }
