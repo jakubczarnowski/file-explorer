@@ -7,6 +7,7 @@ declare global {
             directoryContents: (path: string) => Promise<FileInfo[]>;
             baseUserPath: () => string;
             openFile: (path: string) => void;
+            getCommonRoutes: CommonRoutes;
         };
     }
 }

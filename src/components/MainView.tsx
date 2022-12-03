@@ -22,7 +22,7 @@ const MainView = () => {
         openFile(path);
     };
     return (
-        <Box p={5} flex={"4 1 0"} overflowX={"hidden"} boxSizing={"border-box"}>
+        <Box p={5} flex={"4 1 0"} overflowX={"hidden"}>
             <Stack>
                 <StackItem>
                     <Box>

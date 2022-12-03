@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FileInfo, PathContextTypes } from "./PathContext.types";
+import { CommonRoutes, FileInfo, PathContextTypes } from "./PathContext.types";
 
 export const PathContext = React.createContext<PathContextTypes | null>(null);
 
@@ -9,6 +9,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
     const [currentPath, setCurrentPath] = React.useState<string>(baseUserPath);
     const [history, setHistory] = React.useState<string[]>([baseUserPath]);
     const [historyIndex, setHistoryIndex] = React.useState<number>(0);
+    const [commonRoutes] = React.useState<CommonRoutes>(window.api.getCommonRoutes());
 
     const getFilesInCurrentPath = async (): Promise<FileInfo[]> => {
         const files = await window.api.directoryContents(currentPath);
@@ -53,7 +54,8 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
         const newPath = currentPath.split("\\").slice(0, -1).join("\\");
         changeCurrentPath(newPath);
     };
-    const canGoUp = currentPath !== "C:\\";
+
+    const canGoUp = currentPath.split("\\").length !== 1;
     const canGoBack = history.length > 1 && historyIndex !== 0;
     const canGoForward = history.length > 1 && historyIndex !== history.length - 1;
 
@@ -68,6 +70,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
                 canGoBack,
                 canGoForward,
                 goForward,
+                commonRoutes,
                 pathHistory: history,
                 currentHistoryIndex: historyIndex,
                 baseUserPath,

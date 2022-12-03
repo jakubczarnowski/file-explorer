@@ -18,6 +18,7 @@ const File = ({ name, icon, onDoubleClick, iconColor }: Props) => {
             textAlign={"center"}
             onDoubleClick={() => onDoubleClick && onDoubleClick()}
         >
+            {/* Could've used electron's Native Image, no time to implement it tho  */}
             <Icon color={iconColor} as={icon} w={"75px"} h={"75px"} mb={2} />
             <Tooltip label={name}>
                 <Text w={"100%"} noOfLines={2} sx={{ userSelect: "none" }} fontSize={"sm"} fontWeight={"semibold"}>

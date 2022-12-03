@@ -3,6 +3,12 @@ export type FileInfo = {
     path: string;
     isDirectory: boolean;
 };
+export type CommonRoutes = {
+    Downloads: string;
+    Documents: string;
+    Desktop: string;
+};
+
 // TODO: Implement the methods
 export type PathContextTypes = {
     currentPath: string;
@@ -16,10 +22,9 @@ export type PathContextTypes = {
     canGoUp: boolean;
     canGoForward: boolean;
     canGoBack: boolean;
+    commonRoutes: CommonRoutes;
     pathHistory: string[];
     currentHistoryIndex: number;
-    toggleExtensions?: () => void;
-    isShowingExtensions?: boolean;
     addFavoritePath?: (path: string) => void;
     removeFavoritePath?: (path: string) => void;
     favoritePaths?: string[];

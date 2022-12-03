@@ -1,14 +1,9 @@
 import path from "path";
 import { app, BrowserWindow } from "electron";
 import isDev from "electron-is-dev";
-// the app breaks on current electron version when using import even with file set as module, i've got no time to figure out why, so i'm using require instead
+import * as remoteMain from "@electron/remote/main";
 
-// // eslint-disable-next-line @typescript-eslint/no-var-requires
-// const path = require("path");
-// // eslint-disable-next-line @typescript-eslint/no-var-requires
-// const { app, BrowserWindow } = require("electron");
-// // eslint-disable-next-line @typescript-eslint/no-var-requires
-// const isDev = require("electron-is-dev");
+remoteMain.initialize();
 
 function createWindow() {
     // Create the browser window.
@@ -21,6 +16,7 @@ function createWindow() {
         },
     });
     win.setMenuBarVisibility(false);
+    remoteMain.enable(win.webContents);
 
     // and load the index.html of the app.
     // win.loadFile("index.html");
@@ -30,7 +26,6 @@ function createWindow() {
         win.webContents.openDevTools({ mode: "detach" });
     }
 }
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

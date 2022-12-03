@@ -10,7 +10,8 @@ import {
     Stack,
     StackItem,
 } from "@chakra-ui/react";
-const LeftBar = () => {
+import CommonRoutes from "./CommonRoutes";
+const LeftSection = () => {
     return (
         <Show above={"sm"}>
             <Box p={5} w={"100%"} flex={"1 1 0"}>
@@ -25,11 +26,7 @@ const LeftBar = () => {
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                            <Stack ml={2}>
-                                <StackItem>Downloads</StackItem>
-                                <StackItem>Desktop</StackItem>
-                                <StackItem>Documents</StackItem>
-                            </Stack>
+                            <CommonRoutes />
                         </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem>
@@ -55,4 +52,4 @@ const LeftBar = () => {
     );
 };
 
-export default LeftBar;
+export default LeftSection;
