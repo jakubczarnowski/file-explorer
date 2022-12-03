@@ -4,7 +4,7 @@ import isDev from "electron-is-dev";
 import * as remoteMain from "@electron/remote/main";
 
 remoteMain.initialize();
-
+if (require("electron-squirrel-startup")) app.quit();
 function createWindow() {
     // Create the browser window.
     const win = new BrowserWindow({

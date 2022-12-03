@@ -5,21 +5,21 @@ import { VscChromeMaximize } from "react-icons/vsc";
 
 const TitleBar = () => {
     const minimize = () => {
-        window.windowControl.minimize();
+        window.windowControl.minimizeWindow();
     };
     const maximize = () => {
-        window.windowControl.maximize();
+        window.windowControl.maximizeWindow();
     };
     const close = () => {
-        window.windowControl.close();
+        window.windowControl.closeWindow();
     };
     return (
         <Flex
-            id="drag-region"
+            className="draggable"
+            top={"0px"}
             position={"fixed"}
             justifyContent={"space-between"}
             backgroundColor={"background"}
-            style={{ MozWindowDragging: "drag" }}
             h={"32px"}
             zIndex={10}
             w={"100vw"}
@@ -27,12 +27,13 @@ const TitleBar = () => {
             p={2}
         >
             <Text userSelect={"none"}>File Explorer</Text>
-            <Flex alignItems={"center"} mr={"30px"} gap={"10px"}>
+
+            <Flex alignItems={"center"} mr={"30px"} gap={"10px"} className="notDraggable">
                 <Icon
+                    _hover={{ backgroundColor: "hover" }}
                     onClick={minimize}
                     w={"20px"}
                     h={"20px"}
-                    _hover={{ bgColor: "#FFF" }}
                     borderRadius={"md"}
                     as={MdMinimize}
                 />

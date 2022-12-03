@@ -10,9 +10,9 @@ declare global {
             getCommonRoutes: CommonRoutes;
         };
         windowControl: {
-            minimize: () => void;
-            maximize: () => void;
-            close: () => void;
+            minimizeWindow: () => void;
+            maximizeWindow: () => void;
+            closeWindow: () => void;
         };
     }
 }

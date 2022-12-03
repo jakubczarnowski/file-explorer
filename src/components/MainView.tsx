@@ -20,7 +20,7 @@ const MainView = () => {
                 <StackItem>
                     <Box>
                         <Flex flexWrap={"wrap"} justify={"flex-start"} mx={"auto"} alignItems={"center"}>
-                            {files ? (
+                            {files && files.length > 0 ? (
                                 files.map((file) => (
                                     <File
                                         key={file.name}

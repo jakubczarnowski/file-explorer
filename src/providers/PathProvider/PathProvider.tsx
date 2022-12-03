@@ -18,7 +18,18 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
             .then((files) => setFiles(files))
             .catch(() => setFiles(null));
     }, [currentPath, search]);
-
+    useEffect(() => {
+        const refreshFiles = setTimeout(() => {
+            getFilesInCurrentPath()
+                .then((files) => {
+                    setFiles(files);
+                })
+                .catch(() => {
+                    setFiles(null);
+                });
+        }, 5000);
+        return () => clearTimeout(refreshFiles);
+    }, [currentPath, files]);
     const getFilesInCurrentPath = async (): Promise<FileInfo[]> => {
         const files = await window.api.directoryContents(currentPath, search);
         return files;
@@ -26,6 +37,10 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
 
     const changeCurrentPath = (newPath: string) => {
         if (newPath === currentPath) return;
+        if (!isValidPath(newPath)) {
+            setCurrentPath(history[historyIndex]);
+            return;
+        }
         if (historyIndex !== history.length - 1) {
             setHistory((prev) => [...prev.slice(0, historyIndex + 1), newPath]);
         } else {
@@ -34,7 +49,10 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
         setHistoryIndex((prev) => prev + 1);
         setCurrentPath(newPath);
     };
-
+    const isValidPath = (path: string) => {
+        const regex = /[a-zA-Z]:/;
+        return regex.test(path);
+    };
     const openFile = (path: string) => {
         window.api.openFile(path);
     };
@@ -75,8 +93,6 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
                 canGoForward,
                 goForward,
                 commonRoutes,
-                pathHistory: history,
-                currentHistoryIndex: historyIndex,
                 baseUserPath,
                 setSearchValue: setSearch,
                 openFile,

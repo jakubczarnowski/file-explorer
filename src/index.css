@@ -8,8 +8,17 @@ body {
 * {
     box-sizing: border-box;
 }
-#drag-region {
+input {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.draggable {
     -webkit-app-region: drag;
+}
+.notDraggable {
+    -webkit-app-region: no-drag;
 }
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;

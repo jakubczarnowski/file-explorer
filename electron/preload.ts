@@ -1,5 +1,6 @@
 import { contextBridge } from "electron";
-import { endpoints } from "./filesApi";
-import { handleTitleBar } from "./tiltlebar";
-contextBridge.exposeInMainWorld("api", { ...endpoints });
-handleTitleBar();
+import { filesEnpoints } from "./filesApi";
+import * as titlebarEndpoints from "./titlebar";
+
+contextBridge.exposeInMainWorld("api", { ...filesEnpoints });
+contextBridge.exposeInMainWorld("windowControl", { ...titlebarEndpoints });

@@ -22,12 +22,10 @@ export type PathContextTypes = {
     canGoForward: boolean;
     canGoBack: boolean;
     commonRoutes: CommonRoutes;
-    pathHistory: string[];
-    currentHistoryIndex: number;
+    setSearchValue: (value: string) => void;
     addFavoritePath?: (path: string) => void;
     removeFavoritePath?: (path: string) => void;
     favoritePaths?: string[];
     isFavoritePath?: (path: string) => boolean;
     baseUserPath: string;
-    setSearchValue: (value: string) => void;
 };

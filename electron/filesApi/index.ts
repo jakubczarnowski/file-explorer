@@ -1,3 +1,3 @@
-import * as endpoints from "./filesApi";
+import * as filesEnpoints from "./filesApi";
 
-export { endpoints };
+export { filesEnpoints };

@@ -26,7 +26,7 @@ const directoryContents = async (path: string, search: string): Promise<FileInfo
                 files
                     .filter((val) => val.toLowerCase().includes(search))
                     .map((file) => {
-                        const filePath = `${path}\\${file}`;
+                        const filePath = path + file;
                         try {
                             const isDirectory = fs.lstatSync(filePath).isDirectory();
                             return { name: file, path: filePath, isDirectory };
