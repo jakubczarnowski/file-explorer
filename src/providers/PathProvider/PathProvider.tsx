@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { CommonRoutes, FileInfo, PathContextTypes } from "./PathContext.types";
 
@@ -10,14 +10,17 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
     const [history, setHistory] = React.useState<string[]>([baseUserPath]);
     const [historyIndex, setHistoryIndex] = React.useState<number>(0);
     const [commonRoutes] = React.useState<CommonRoutes>(window.api.getCommonRoutes());
+    const [search, setSearch] = useState<string>("");
+    const [files, setFiles] = useState<FileInfo[] | null>(null);
+
+    useEffect(() => {
+        getFilesInCurrentPath()
+            .then((files) => setFiles(files))
+            .catch(() => setFiles(null));
+    }, [currentPath, search]);
 
     const getFilesInCurrentPath = async (): Promise<FileInfo[]> => {
-        const files = await window.api.directoryContents(currentPath);
-        return files;
-    };
-
-    const getFilesInPath = async (path: string): Promise<FileInfo[]> => {
-        const files = await window.api.directoryContents(path);
+        const files = await window.api.directoryContents(currentPath, search);
         return files;
     };
 
@@ -66,6 +69,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
                 changeCurrentPath,
                 goBack,
                 goUp,
+                files,
                 canGoUp,
                 canGoBack,
                 canGoForward,
@@ -74,8 +78,7 @@ export const PathProvider = ({ children }: { children: React.ReactNode }) => {
                 pathHistory: history,
                 currentHistoryIndex: historyIndex,
                 baseUserPath,
-                getFilesInCurrentPath,
-                getFilesInPath,
+                setSearchValue: setSearch,
                 openFile,
             }}
         >

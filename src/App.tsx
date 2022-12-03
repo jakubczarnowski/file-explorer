@@ -1,6 +1,7 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { LeftSection, MainView, MenuBar } from "./components";
+import TitleBar from "./components/TitleBar/TitleBar";
 import { BaseLayout } from "./layout";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     }, []);
     return (
         <BaseLayout>
+            <TitleBar />
             <MenuBar />
             <Box display={"flex"} flexDir={"row"} alignItems={"stretch"} minH={"100%"}>
                 <LeftSection />

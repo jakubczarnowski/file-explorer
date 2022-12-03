@@ -14,23 +14,26 @@ const commonRoutes = {
     Desktop: DESKTOP_PATH,
 };
 
-const directoryContents = async (path: string): Promise<FileInfo[]> => {
+const directoryContents = async (path: string, search: string): Promise<FileInfo[]> => {
     return new Promise((resolve, reject) => {
         // Adding \\ for reading drive paths
-        fs.readdir(path + "\\", (err, files) => {
+        path = path.endsWith("\\") ? path : path + "\\";
+        fs.readdir(path, (err, files) => {
             if (err) {
                 reject(err.message);
             }
             resolve(
-                files.map((file) => {
-                    const filePath = `${path}\\${file}`;
-                    try {
-                        const isDirectory = fs.lstatSync(filePath).isDirectory();
-                        return { name: file, path: filePath, isDirectory };
-                    } catch {
-                        return { name: file, path: filePath, isDirectory: false };
-                    }
-                })
+                files
+                    .filter((val) => val.toLowerCase().includes(search))
+                    .map((file) => {
+                        const filePath = `${path}\\${file}`;
+                        try {
+                            const isDirectory = fs.lstatSync(filePath).isDirectory();
+                            return { name: file, path: filePath, isDirectory };
+                        } catch {
+                            return { name: file, path: filePath, isDirectory: false };
+                        }
+                    })
             );
         });
     });

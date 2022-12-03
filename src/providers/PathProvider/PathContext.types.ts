@@ -13,10 +13,9 @@ export type CommonRoutes = {
 export type PathContextTypes = {
     currentPath: string;
     changeCurrentPath: (newPath: string) => void;
-    getFilesInCurrentPath: () => Promise<FileInfo[]>;
-    getFilesInPath: (path: string) => Promise<FileInfo[]>;
     openFile: (path: string) => void;
     goBack: () => void;
+    files: FileInfo[] | null;
     goForward: () => void;
     goUp: () => void;
     canGoUp: boolean;
@@ -30,4 +29,5 @@ export type PathContextTypes = {
     favoritePaths?: string[];
     isFavoritePath?: (path: string) => boolean;
     baseUserPath: string;
+    setSearchValue: (value: string) => void;
 };

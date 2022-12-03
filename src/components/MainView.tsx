@@ -1,18 +1,11 @@
 import { Box, Flex, Stack, StackItem, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import { usePathContext } from "../hooks/usePathContext";
 import { FileInfo } from "../providers/PathProvider/PathContext.types";
 import { mapFileTypeToIcon } from "../utils/utils";
 import { File } from "./";
 
 const MainView = () => {
-    const { currentPath, getFilesInCurrentPath, changeCurrentPath, openFile } = usePathContext();
-    const [files, setFiles] = useState<FileInfo[] | null>(null);
-    useEffect(() => {
-        getFilesInCurrentPath()
-            .then((files) => setFiles(files))
-            .catch(() => setFiles(null));
-    }, [currentPath]);
+    const { changeCurrentPath, openFile, files } = usePathContext();
     const handleDoubleClick = (file: FileInfo) => {
         const path = file.path;
         if (file.isDirectory) {

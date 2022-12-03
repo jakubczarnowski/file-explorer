@@ -4,10 +4,15 @@ declare global {
     interface Window {
         api: {
             currentDirectory: () => string;
-            directoryContents: (path: string) => Promise<FileInfo[]>;
+            directoryContents: (path: string, search: string) => Promise<FileInfo[]>;
             baseUserPath: () => string;
             openFile: (path: string) => void;
             getCommonRoutes: CommonRoutes;
+        };
+        windowControl: {
+            minimize: () => void;
+            maximize: () => void;
+            close: () => void;
         };
     }
 }
