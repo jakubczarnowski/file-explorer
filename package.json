@@ -2,7 +2,7 @@
     "name": "file-explorer",
     "version": "0.1.0",
     "private": true,
-    "main": "dist/electron/electron.js",
+    "main": "build/electron/electron.js",
     "homepage": "./",
     "dependencies": {
         "@chakra-ui/react": "^2.4.2",
@@ -26,9 +26,7 @@
         "prepare": "husky install",
         "dev": "concurrently -k \"cross-env BROWSER=none npm start\" \"tsc -p electron && npm run electron\"",
         "electron": "wait-on tcp:3000 && electron .",
-        "package": "tsc -p electron && electron-builder build --win -c.extraMetadata.main=dist/electron/electron.js --publish never",
-        "publish": "electron-builder build --win --publish always",
-        "make": "electron-forge make"
+        "dist": "npm run build && tsc -p electron &&  electron-builder"
     },
     "eslintConfig": {
         "extends": [
@@ -66,5 +64,20 @@
         "lint-staged": "^13.0.4",
         "typescript": "^4.9.3",
         "wait-on": "^6.0.1"
+    },
+    "build": {
+        "extends": null,
+        "appId": "com.electron.file-explorer",
+        "productName": "File Explorer",
+        "files": [
+            "build/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        },
+        "win": {
+            "target": "nsis",
+            "icon": "assets/icon.jpg"
+        }
     }
 }

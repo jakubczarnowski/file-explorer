@@ -7,10 +7,10 @@ import {
     Box,
     Show,
     Text,
-    Stack,
-    StackItem,
 } from "@chakra-ui/react";
+
 import CommonRoutes from "./CommonRoutes";
+
 const LeftSection = () => {
     return (
         <Show above={"sm"}>
@@ -27,23 +27,6 @@ const LeftSection = () => {
                         </h2>
                         <AccordionPanel pb={4}>
                             <CommonRoutes />
-                        </AccordionPanel>
-                    </AccordionItem>
-                    <AccordionItem>
-                        <h2>
-                            <AccordionButton>
-                                <Box flex="1" textAlign={"left"}>
-                                    <Text sx={{ userSelect: "none" }}>Favorites</Text>
-                                </Box>
-                                <AccordionIcon />
-                            </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4}>
-                            <Stack ml={2}>
-                                <StackItem>Downloads</StackItem>
-                                <StackItem>Desktop</StackItem>
-                                <StackItem>Documents</StackItem>
-                            </Stack>
                         </AccordionPanel>
                     </AccordionItem>
                 </Accordion>
